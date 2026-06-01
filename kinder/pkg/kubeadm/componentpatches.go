@@ -30,9 +30,9 @@ func GetPatchesDirectoryPatches(kubeadmConfigVersion string) ([]string, error) {
 	log.Debugf("Preparing patches directory for kubeadm config %s", kubeadmConfigVersion)
 	var patchInit, patchJoin, patchUpgradeApply, patchUpgradeNode string
 	switch kubeadmConfigVersion {
-	case "v1beta3":
-		patchInit = patchesDirectoryPatchInitv1beta3
-		patchJoin = patchesDirectoryPatchJoinv1beta3
+	case "v1":
+		patchInit = patchesDirectoryPatchInitv1
+		patchJoin = patchesDirectoryPatchJoinv1
 		return []string{
 			fmt.Sprintf(patchInit, constants.PatchesDir),
 			fmt.Sprintf(patchJoin, constants.PatchesDir),
@@ -53,12 +53,12 @@ func GetPatchesDirectoryPatches(kubeadmConfigVersion string) ([]string, error) {
 	}
 }
 
-const patchesDirectoryPatchInitv1beta3 = `apiVersion: kubeadm.k8s.io/v1beta3
+const patchesDirectoryPatchInitv1 = `apiVersion: kubeadm.k8s.io/v1
 kind: InitConfiguration
 patches:
   directory: %s`
 
-const patchesDirectoryPatchJoinv1beta3 = `apiVersion: kubeadm.k8s.io/v1beta3
+const patchesDirectoryPatchJoinv1 = `apiVersion: kubeadm.k8s.io/v1
 kind: JoinConfiguration
 patches:
   directory: %s`

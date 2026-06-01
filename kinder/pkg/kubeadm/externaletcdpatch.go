@@ -31,8 +31,8 @@ func GetExternalEtcdPatch(kubeadmConfigVersion string, etcdIP string) (string, e
 
 	var externalEtcdPatch string
 	switch kubeadmConfigVersion {
-	case "v1beta3":
-		externalEtcdPatch = externalEtcdPatchv1beta3
+	case "v1":
+		externalEtcdPatch = externalEtcdPatchv1
 	case "v1beta4":
 		externalEtcdPatch = externalEtcdPatchv1beta4
 	default:
@@ -42,7 +42,7 @@ func GetExternalEtcdPatch(kubeadmConfigVersion string, etcdIP string) (string, e
 	return fmt.Sprintf(externalEtcdPatch, etcdIP), nil
 }
 
-const externalEtcdPatchv1beta3 = `apiVersion: kubeadm.k8s.io/v1beta3
+const externalEtcdPatchv1 = `apiVersion: kubeadm.k8s.io/v1
 kind: ClusterConfiguration
 etcd:
   external:

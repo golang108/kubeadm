@@ -30,8 +30,8 @@ func GetEncryptionAlgorithmPatch(kubeadmConfigVersion string, algorithm string) 
 	log.Debugf("Preparing encryptionAlgorithm patch for kubeadm config %s", kubeadmConfigVersion)
 
 	switch kubeadmConfigVersion {
-	case "v1beta3":
-		return "", errors.New("ClusterConfiguration.encryptionAlgorithm is not supported in v1beta3")
+	case "v1":
+		return "", errors.New("ClusterConfiguration.encryptionAlgorithm is not supported in v1")
 	case "v1beta4":
 		patch = encryptionAlgorithmPatchV1beta4
 	default:

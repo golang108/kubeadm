@@ -31,8 +31,8 @@ func GetDockerPatch(kubeadmConfigVersion string, ControlPlane bool) ([]string, e
 
 	var basePatch string
 	switch kubeadmConfigVersion {
-	case "v1beta3":
-		basePatch = dockerPatchv1beta3
+	case "v1":
+		basePatch = dockerPatchv1
 	case "v1beta4":
 		basePatch = dockerPatchv1beta4
 	default:
@@ -45,7 +45,7 @@ func GetDockerPatch(kubeadmConfigVersion string, ControlPlane bool) ([]string, e
 	}, nil
 }
 
-const dockerPatchv1beta3 = `apiVersion: kubeadm.k8s.io/v1beta3
+const dockerPatchv1 = `apiVersion: kubeadm.k8s.io/v1
 kind: %s
 nodeRegistration:
   criSocket: /var/run/dockershim.sock`

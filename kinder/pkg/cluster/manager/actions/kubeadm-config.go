@@ -279,7 +279,6 @@ func getKubeadmConfig(c *status.Cluster, n *status.Node, data kubeadm.ConfigData
 
 	// add patches directory to the config
 	patchesDirectoryPatches, err := kubeadm.GetPatchesDirectoryPatches(kubeadmConfigVersion)
-	// skip if kubeadm config version is not v1beta3
 	if err == nil {
 		patches = append(patches, patchesDirectoryPatches...)
 	}
